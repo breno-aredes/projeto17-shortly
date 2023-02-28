@@ -7,9 +7,11 @@ export async function userValidate(req, res, next) {
     email,
   ]);
 
-  if (userExist) return res.status(409).send("usuario já existe");
+  if (userExist.rowCount) return res.status(409).send("usuario já existe");
 
   if (password !== confirmPassword) {
     return res.status(422).send("as senhas são diferentes");
   }
+
+  next();
 }

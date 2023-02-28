@@ -27,10 +27,9 @@ SET default_table_access_method = heap;
 CREATE TABLE public.urls (
     id integer NOT NULL,
     "userId" integer NOT NULL,
-    "shortUrl" character varying(10) NOT NULL,
-    url text NOT NULL,
-    visits integer DEFAULT 0,
-    "createdAt" timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+    "longUrl" text NOT NULL,
+    "shortUrl" character varying(20) NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -60,9 +59,9 @@ ALTER SEQUENCE public.urls_id_seq OWNED BY public.urls.id;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    email character varying(255) NOT NULL,
-    password text NOT NULL
+    name character varying(50) NOT NULL,
+    email character varying(100) NOT NULL,
+    password character varying(100) NOT NULL
 );
 
 
@@ -110,6 +109,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.users VALUES (1, 'breno A', 'breno@teste.com', '$2b$10$Efc7jvg.gacHQQA.SVCcquovGB39qt9gYPxJ820EIH5F3Ov.s6eMq');
 
 
 --
@@ -123,7 +123,7 @@ SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_id_seq', 1, true);
 
 
 --
