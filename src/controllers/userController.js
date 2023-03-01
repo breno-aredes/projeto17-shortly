@@ -1,8 +1,10 @@
 import { db } from "../database/database.connection.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
-export async function createUser(req, res) {
-  const { name, email, password } = req.body;
+export async function signUp(req, res) {
+  const { name } = req.body;
+  const { email, password } = res.locals.user;
 
   const hashPassword = bcrypt.hashSync(password, 10);
 
@@ -13,6 +15,20 @@ export async function createUser(req, res) {
     );
 
     res.status(201).send("conta criada com sucesso");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
+
+export async function signIn(req, res) {
+  const { email, name } = res.locals.user;
+
+  try {
+    const token = jwt.sign({ name, email }, process.env.SECRET, {
+      expiresIn: "20h",
+    });
+
+    return res.status(200).send({ token, name });
   } catch (error) {
     res.status(500).send(error.message);
   }

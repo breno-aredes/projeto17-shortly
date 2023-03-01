@@ -61,7 +61,8 @@ CREATE TABLE public.users (
     id integer NOT NULL,
     name character varying(50) NOT NULL,
     email character varying(100) NOT NULL,
-    password character varying(100) NOT NULL
+    password character varying(100) NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -109,7 +110,11 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (1, 'breno A', 'breno@teste.com', '$2b$10$Efc7jvg.gacHQQA.SVCcquovGB39qt9gYPxJ820EIH5F3Ov.s6eMq');
+INSERT INTO public.users VALUES (1, 'breno A', 'breno@teste.com', '$2b$10$Efc7jvg.gacHQQA.SVCcquovGB39qt9gYPxJ820EIH5F3Ov.s6eMq', '2023-02-28 19:03:45.705301');
+INSERT INTO public.users VALUES (2, 'Breno A', 'breno@teste2.com', '$2b$10$e4KRO.NiHIDbNA7gvxmNUeu9IEOAub1Gsp6HH41Dyvi.k7Vf3UwYC', '2023-03-01 13:45:24.117049');
+INSERT INTO public.users VALUES (3, 'breno a', 'breno@teste1.com', '$2b$10$X98/XiEXYbW8wm.F./g6zuxF3imMqejJh0KaoNpJZh7WiDo.nwkFa', '2023-03-01 13:46:28.956749');
+INSERT INTO public.users VALUES (4, 'breno a', 'breno@teste3.com', '$2b$10$Lf8FLiL5UKYONjvrI438h.Hk5jvuVd2d39K/369KJN21dDvmyOALm', '2023-03-01 13:46:40.152913');
+INSERT INTO public.users VALUES (5, 'breno a', 'breno@teste4.com', '$2b$10$ifM1lrv6EahMB5gf4KjIeO1QS9VUpNFs7pIRXxbUQ5Amjpjt5/XLm', '2023-03-01 13:46:43.646205');
 
 
 --
@@ -123,7 +128,7 @@ SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 5, true);
 
 
 --
