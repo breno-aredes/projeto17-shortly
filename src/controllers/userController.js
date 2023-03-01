@@ -21,14 +21,14 @@ export async function signUp(req, res) {
 }
 
 export async function signIn(req, res) {
-  const { email, name } = res.locals.user;
+  const { email, name, id } = res.locals.user;
 
   try {
     const token = jwt.sign({ name, email }, process.env.SECRET, {
       expiresIn: "20h",
     });
 
-    return res.status(200).send({ token, name });
+    return res.status(200).send({ token, name, id });
   } catch (error) {
     res.status(500).send(error.message);
   }

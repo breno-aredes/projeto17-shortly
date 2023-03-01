@@ -115,6 +115,7 @@ INSERT INTO public.users VALUES (2, 'Breno A', 'breno@teste2.com', '$2b$10$e4KRO
 INSERT INTO public.users VALUES (3, 'breno a', 'breno@teste1.com', '$2b$10$X98/XiEXYbW8wm.F./g6zuxF3imMqejJh0KaoNpJZh7WiDo.nwkFa', '2023-03-01 13:46:28.956749');
 INSERT INTO public.users VALUES (4, 'breno a', 'breno@teste3.com', '$2b$10$Lf8FLiL5UKYONjvrI438h.Hk5jvuVd2d39K/369KJN21dDvmyOALm', '2023-03-01 13:46:40.152913');
 INSERT INTO public.users VALUES (5, 'breno a', 'breno@teste4.com', '$2b$10$ifM1lrv6EahMB5gf4KjIeO1QS9VUpNFs7pIRXxbUQ5Amjpjt5/XLm', '2023-03-01 13:46:43.646205');
+INSERT INTO public.users VALUES (6, 'breno a', 'breno@teste5.com', '$2b$10$RoDCBFipdMH0eBNUadA6J.jh/NgPHy0wlcKUStaoURBgNFUVF1tF.', '2023-03-01 14:50:23.103467');
 
 
 --
@@ -128,7 +129,7 @@ SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 5, true);
+SELECT pg_catalog.setval('public.users_id_seq', 6, true);
 
 
 --
