@@ -29,7 +29,8 @@ CREATE TABLE public.urls (
     "userId" integer NOT NULL,
     "longUrl" text NOT NULL,
     "shortUrl" character varying(20) NOT NULL,
-    "createdAt" timestamp without time zone DEFAULT now()
+    "createdAt" timestamp without time zone DEFAULT now(),
+    count integer DEFAULT 0
 );
 
 
@@ -104,6 +105,17 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.urls VALUES (2, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', '8HYVSo3Jj1', '2023-03-02 16:52:25.970788', 0);
+INSERT INTO public.urls VALUES (3, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'lBm6i1ffB1', '2023-03-02 16:52:44.882576', 0);
+INSERT INTO public.urls VALUES (4, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'jyX9YA8Y9R', '2023-03-02 17:04:54.885936', 0);
+INSERT INTO public.urls VALUES (5, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'CAPPUlkYb2', '2023-03-02 17:05:05.930119', 0);
+INSERT INTO public.urls VALUES (6, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'IL4-YLzgfd', '2023-03-02 17:05:49.948179', 0);
+INSERT INTO public.urls VALUES (7, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'pCXfGCYSyb', '2023-03-02 17:07:03.565398', 0);
+INSERT INTO public.urls VALUES (8, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'nPrkv-XSlj', '2023-03-02 17:07:17.117441', 0);
+INSERT INTO public.urls VALUES (9, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'BIwgbqiGVU', '2023-03-02 17:07:47.669468', 0);
+INSERT INTO public.urls VALUES (10, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'KDzhtCEkQ_', '2023-03-02 17:09:02.458007', 0);
+INSERT INTO public.urls VALUES (11, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', '64R9_7WgdZ', '2023-03-02 17:11:12.873662', 0);
+INSERT INTO public.urls VALUES (1, 7, 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-c306c707e7504d32a689e0ff6dffb8e3', 'U2-JLktHx2', '2023-03-02 16:44:23.373087', 7);
 
 
 --
@@ -116,20 +128,21 @@ INSERT INTO public.users VALUES (3, 'breno a', 'breno@teste1.com', '$2b$10$X98/X
 INSERT INTO public.users VALUES (4, 'breno a', 'breno@teste3.com', '$2b$10$Lf8FLiL5UKYONjvrI438h.Hk5jvuVd2d39K/369KJN21dDvmyOALm', '2023-03-01 13:46:40.152913');
 INSERT INTO public.users VALUES (5, 'breno a', 'breno@teste4.com', '$2b$10$ifM1lrv6EahMB5gf4KjIeO1QS9VUpNFs7pIRXxbUQ5Amjpjt5/XLm', '2023-03-01 13:46:43.646205');
 INSERT INTO public.users VALUES (6, 'breno a', 'breno@teste5.com', '$2b$10$RoDCBFipdMH0eBNUadA6J.jh/NgPHy0wlcKUStaoURBgNFUVF1tF.', '2023-03-01 14:50:23.103467');
+INSERT INTO public.users VALUES (7, 'breno', 'breno@teste7.com', '$2b$10$XN67.RvKoUqxGXlim7oFeurd/kbJNlxHDXd9UDz/vAI28ycnvgDXS', '2023-03-02 15:25:32.08274');
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
+SELECT pg_catalog.setval('public.urls_id_seq', 11, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 6, true);
+SELECT pg_catalog.setval('public.users_id_seq', 7, true);
 
 
 --

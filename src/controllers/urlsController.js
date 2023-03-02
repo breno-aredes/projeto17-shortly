@@ -47,6 +47,7 @@ export async function openShortUrl(req, res) {
 
     res.redirect(longUrl);
   } catch (error) {
+    console.error(error);
     res.status(500).send(error.message);
   }
 }
