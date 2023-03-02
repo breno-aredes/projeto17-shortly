@@ -11,7 +11,7 @@ import {
   validateUrl,
   validateUrlById,
 } from "../middleware/validateUrl.js";
-import { urlSchema } from "../models/urlsModels.js";
+import { urlSchema } from "../schemas/urlSchema.js";
 
 export const urlRouter = Router();
 
