@@ -3,7 +3,7 @@ import {
   getUrlById,
   openShortUrl,
   shortenUrl,
-} from "../controllers/urlsController.js";
+} from "../controllers/urlController.js";
 import { authToken } from "../middleware/authValidation.js";
 import { validateSchema } from "../middleware/validateSchema.js";
 import {

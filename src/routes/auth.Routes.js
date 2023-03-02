@@ -1,4 +1,4 @@
-import { signIn, signUp } from "../controllers/userController.js";
+import { signIn, signUp } from "../controllers/authController.js";
 import { Router } from "express";
 import { validateSchema } from "../middleware/validateSchema.js";
 import { loginValidate, signUpValidate } from "../middleware/authValidation.js";
