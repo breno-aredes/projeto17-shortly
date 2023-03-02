@@ -35,3 +35,18 @@ export async function getUrlById(req, res) {
     res.status(500).send(error.message);
   }
 }
+
+export async function openShortUrl(req, res) {
+  const { count, shortUrl, longUrl } = res.locals.url;
+
+  try {
+    await db.query(`UPDATE urls SET count = $1 WHERE "shortUrl" = $2`, [
+      count + 1,
+      shortUrl,
+    ]);
+
+    res.redirect(longUrl);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
