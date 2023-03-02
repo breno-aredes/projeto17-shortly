@@ -24,7 +24,7 @@ export async function signIn(req, res) {
   const { email } = res.locals.user;
 
   try {
-    const token = jwt.sign({ email }, "secret", {
+    const token = jwt.sign({ email }, "my_secret_string", {
       expiresIn: "20h",
     });
 

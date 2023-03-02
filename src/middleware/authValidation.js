@@ -2,12 +2,13 @@ import jwt from "jsonwebtoken";
 
 export function authToken(req, res, next) {
   const { authorization } = req.headers;
-  const token = authorization.replace("Bearer", "");
+  const token = authorization?.replace("Bearer ", "");
 
   if (!token) return res.status(401).send("não autorizado.");
 
   try {
-    const verifyToken = jwt.verify(token, "secret");
+    const verifyToken = jwt.verify(token, "my_secret_string");
+
     res.locals.token = verifyToken;
 
     next();
