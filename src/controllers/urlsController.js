@@ -1,4 +1,4 @@
-import db from "../database/database.connection.js";
+import { db } from "../database/database.connection.js";
 import { nanoid } from "nanoid";
 
 export async function shortenUrl(req, res) {

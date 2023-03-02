@@ -1,4 +1,4 @@
-import db from "../database/database.connection.js";
+import { db } from "../database/database.connection.js";
 
 export async function validateUrl(res, req, next) {
   const token = res.locals.token;
