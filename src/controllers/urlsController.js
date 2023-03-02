@@ -8,11 +8,18 @@ export async function shortenUrl(req, res) {
   const shortUrl = nanoid(10);
 
   try {
-    const result = await db.query(
+    await db.query(
       'INSERT INTO urls ("longUrl", "shortUrl", "userId") VALUES ($1, $2, $3);',
       [url, shortUrl, user.id]
     );
-    res.status(201).send(result.rows[0]);
+
+    const result = await db.query(`SELECT * FROM urls WHERE "shortUrl" = $1;`, [
+      shortUrl,
+    ]);
+
+    const { id } = result.rows[0];
+
+    res.status(201).send({ id, shortUrl });
   } catch (error) {
     res.status(500).send(error.message);
   }
