@@ -24,3 +24,14 @@ export async function shortenUrl(req, res) {
     res.status(500).send(error.message);
   }
 }
+
+export async function getUrlById(req, res) {
+  console.log(res.locals.url);
+  const { id, shortUrl, longUrl } = res.locals.url;
+
+  try {
+    res.status(200).send({ id, shortUrl, url: longUrl });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
