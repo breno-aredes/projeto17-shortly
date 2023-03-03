@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  deleteUrl,
   getUrlById,
   openShortUrl,
   shortenUrl,
@@ -8,6 +9,7 @@ import { authToken } from "../middleware/authValidation.js";
 import { validateSchema } from "../middleware/validateSchema.js";
 import {
   validateOpenUrl,
+  validateToDelete,
   validateUrl,
   validateUrlById,
 } from "../middleware/validateUrl.js";
@@ -23,4 +25,12 @@ urlRouter.post(
   validateSchema(urlSchema),
   validateUrl,
   shortenUrl
+);
+//aproveitando as rotas criadas anteriormente para fazer o delete.
+urlRouter.delete(
+  "/urls/:id",
+  authToken,
+  validateUrl,
+  validateToDelete,
+  deleteUrl
 );

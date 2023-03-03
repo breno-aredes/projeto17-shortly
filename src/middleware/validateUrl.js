@@ -27,8 +27,9 @@ export async function validateUrlById(req, res, next) {
       id,
     ]);
 
-    if (!verifyUrlId.rowCount)
+    if (!verifyUrlId.rowCount) {
       return res.status(404).send("url não encontrada");
+    }
 
     res.locals.url = verifyUrlId.rows[0];
 
@@ -50,6 +51,28 @@ export async function validateOpenUrl(req, res, next) {
     if (!verifyUrl.rowCount) return res.status(404).send("Url não existe");
 
     res.locals.url = verifyUrl.rows[0];
+
+    next();
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
+
+export async function validateToDelete(req, res, next) {
+  const urlId = req.params.id;
+  const userId = res.locals.user.id;
+
+  try {
+    const verifyUrlAndUser = await db.query(
+      `SELECT * FROM urls WHERE id = $1 and "userId" = $2`,
+      [urlId, userId]
+    );
+
+    if (!verifyUrlAndUser.rowCount) {
+      return res.status(404).send("url não encontrada");
+    }
+
+    res.locals.url = verifyUrlAndUser.rows[0];
 
     next();
   } catch (error) {
