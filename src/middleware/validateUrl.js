@@ -69,7 +69,7 @@ export async function validateToDelete(req, res, next) {
     );
 
     if (!verifyUrlAndUser.rowCount) {
-      return res.status(404).send("url não encontrada");
+      return res.status(401).send("não autorizado.");
     }
 
     res.locals.url = verifyUrlAndUser.rows[0];
