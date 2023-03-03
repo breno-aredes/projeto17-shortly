@@ -59,7 +59,7 @@ export async function validateOpenUrl(req, res, next) {
 }
 
 export async function validateToDelete(req, res, next) {
-  const urlId = req.params.id;
+  const urlId = res.locals.url.id;
   const userId = res.locals.user.id;
 
   try {

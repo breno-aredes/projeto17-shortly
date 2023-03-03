@@ -31,6 +31,7 @@ urlRouter.delete(
   "/urls/:id",
   authToken,
   validateUrl,
+  validateUrlById,
   validateToDelete,
   deleteUrl
 );
