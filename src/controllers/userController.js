@@ -5,16 +5,22 @@ export async function getProfile(req, res) {
 
   try {
     const data = await db.query(
-      `
-        SELECT users.id, users.name,
-          SUM(urls.count) as visitCount,
-          json_build_object('id', urls.id, 'shortUrl', urls."shortUrl", 'url', urls.url, 'visitCount', urls.count) as shortenedUrls,
-        FROM users
-        JOIN urls
-          ON users.id = urls."userId"
-        WHERE urls."userId" = $1 AND users.id = $2 
-        GROUP BY users.id;
-      `,
+      `SELECT 
+        users.id, 
+        users.name,
+        SUM(urls.count) as visitCount,
+        json_agg(
+            json_build_object(
+                'id', urls.id, 
+                'shortUrl', urls."shortUrl", 
+                'url', urls."longUrl", 
+                'visitCount', urls.count
+            )
+        ) as "shortenedUrls"
+    FROM users
+    JOIN urls ON users.id = urls."userId"
+    WHERE urls."userId" = $1 AND users.id = $2
+    GROUP BY users.id, users.name;`,
       [user.id, user.id]
     );
 
