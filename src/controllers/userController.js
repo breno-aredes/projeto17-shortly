@@ -4,11 +4,11 @@ export async function getProfile(req, res) {
   const user = res.locals.user;
 
   try {
-    const data = await db.query(
+    const response = await db.query(
       `SELECT 
         users.id, 
         users.name,
-        SUM(urls.count) as visitCount,
+        SUM(urls.count) as "visitCount",
         json_agg(
             json_build_object(
                 'id', urls.id, 
@@ -24,7 +24,7 @@ export async function getProfile(req, res) {
       [user.id, user.id]
     );
 
-    res.status(200).send(data.rows[0]);
+    res.status(200).send(response.rows[0]);
   } catch (error) {
     res.status(500).send(error.message);
   }
