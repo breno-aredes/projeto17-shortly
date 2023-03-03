@@ -26,7 +26,6 @@ export async function shortenUrl(req, res) {
 }
 
 export async function getUrlById(req, res) {
-  console.log(res.locals.url);
   const { id, shortUrl, longUrl } = res.locals.url;
 
   try {

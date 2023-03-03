@@ -4,12 +4,12 @@ import { validateSchema } from "../middleware/validateSchema.js";
 import { loginValidate, signUpValidate } from "../middleware/authValidation.js";
 import { signInSchema, signUpSchema } from "../schemas/authSchema.js";
 
-export const userRouter = Router();
+export const authRouter = Router();
 
-userRouter.post(
+authRouter.post(
   "/signup",
   validateSchema(signUpSchema),
   signUpValidate,
   signUp
 );
-userRouter.post("/signin", validateSchema(signInSchema), loginValidate, signIn);
+authRouter.post("/signin", validateSchema(signInSchema), loginValidate, signIn);
