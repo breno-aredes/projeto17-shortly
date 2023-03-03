@@ -8,7 +8,7 @@ export async function ranking(req, res) {
     FROM urls
     JOIN users ON urls."userId" = users.id
     GROUP BY users.id
-    ORDER BY "linksCount" DESC
+    ORDER BY "visitCount" DESC
     LIMIT 10;
   `);
     res.status(200).send(rank.rows);
